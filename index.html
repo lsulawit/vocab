@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>定位 Study + Quiz</title>
+
+<style>
+body{
+  margin:0;
+  font-family: Arial;
+  background:#0f172a;
+  color:white;
+}
+
+.header{
+  text-align:center;
+  padding:20px;
+}
+
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:10px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  background:#111827;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+th{
+  background:#1f2937;
+  padding:10px;
+}
+
+td{
+  padding:8px;
+  border-bottom:1px solid #1f2937;
+}
+
+.section-title{
+  margin-top:20px;
+  font-size:18px;
+  color:#93c5fd;
+}
+
+button{
+  padding:12px;
+  width:100%;
+  margin-top:15px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:16px;
+}
+
+.start{
+  background:#22c55e;
+  color:black;
+}
+
+.quiz-box{
+  display:none;
+  margin-top:20px;
+  background:#0b1220;
+  padding:15px;
+  border-radius:12px;
+}
+
+.choice{
+  background:#1f2937;
+  color:white;
+  margin:6px 0;
+}
+
+.choice:hover{
+  background:#374151;
+}
+
+.result{
+  text-align:center;
+  margin-top:10px;
+  font-size:18px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<h2>📍 定位 Study + Quiz</h2>
+<p>by Sulawit Songsang</p>
+</div>
+
+<div class="container">
+
+<!-- TABLE -->
+<div class="section-title">📘 ตารางคำศัพท์</div>
+
+<table>
+<tr><th>中文</th><th>พินอิน</th><th>ไทย</th></tr>
+
+<tr><td>拇指</td><td>mǔ zhǐ</td><td>นิ้วโป้ง</td></tr>
+<tr><td>食指</td><td>shí zhǐ</td><td>นิ้วชี้</td></tr>
+<tr><td>中指</td><td>zhōng zhǐ</td><td>นิ้วกลาง</td></tr>
+<tr><td>无名指</td><td>wú míng zhǐ</td><td>นิ้วนาง</td></tr>
+<tr><td>小指</td><td>xiǎo zhǐ</td><td>นิ้วก้อย</td></tr>
+
+<tr><td>桡侧</td><td>ráo cè</td><td>ด้านนิ้วโป้ง</td></tr>
+<tr><td>尺侧</td><td>chǐ cè</td><td>ด้านนิ้วก้อย</td></tr>
+
+<tr><td>内侧</td><td>nèi cè</td><td>ด้านใน</td></tr>
+<tr><td>外侧</td><td>wài cè</td><td>ด้านนอก</td></tr>
+
+<tr><td>横纹</td><td>héng wén</td><td>รอยพับ</td></tr>
+
+<tr><td>凹陷中</td><td>āo xiàn zhōng</td><td>ในร่องบุ๋ม</td></tr>
+
+<tr><td>骨</td><td>gǔ</td><td>กระดูก</td></tr>
+
+<tr><td>肌肉</td><td>jī ròu</td><td>กล้ามเนื้อ</td></tr>
+
+<tr><td>肌腱</td><td>jī jiàn</td><td>เอ็น</td></tr>
+
+<tr><td>两筋之间</td><td>liǎng jīn zhī jiān</td><td>ระหว่างเอ็น</td></tr>
+
+<tr><td>上</td><td>shàng</td><td>ด้านบน</td></tr>
+<tr><td>下</td><td>xià</td><td>ด้านล่าง</td></tr>
+
+<tr><td>前</td><td>qián</td><td>ด้านหน้า</td></tr>
+<tr><td>后</td><td>hòu</td><td>ด้านหลัง</td></tr>
+
+<tr><td>旁开</td><td>páng kāi</td><td>เยื้องออก</td></tr>
+
+</table>
+
+<!-- BUTTON -->
+<button class="start" onclick="startQuiz()">🎯 ลองทำ Quiz</button>
+
+<!-- QUIZ -->
+<div class="quiz-box" id="quizBox">
+
+<div id="question"></div>
+<div id="choices"></div>
+
+<div class="result" id="result"></div>
+
+</div>
+
+</div>
+
+<script>
+
+const quiz = [
+{q:"桡侧 คืออะไร?",a:["ด้านนิ้วโป้ง","ด้านนิ้วก้อย","ด้านใน","ด้านหลัง"],c:0},
+{q:"尺侧 คืออะไร?",a:["ด้านนิ้วก้อย","ด้านนิ้วโป้ง","ด้านหน้า","ด้านบน"],c:0},
+{q:"凹陷中 หมายถึง?",a:["ร่องบุ๋ม","กระดูก","เอ็น","กล้ามเนื้อ"],c:0},
+{q:"横纹 คืออะไร?",a:["รอยพับ","กระดูก","เส้นเลือด","ผิวหนัง"],c:0},
+{q:"两筋之间 คือ?",a:["ระหว่างเอ็น","ใต้เล็บ","บนหัว","ฝ่าเท้า"],c:0}
+];
+
+let index = 0;
+let score = 0;
+
+function startQuiz(){
+document.getElementById("quizBox").style.display="block";
+load();
+}
+
+function load(){
+if(index>=quiz.length){
+document.getElementById("question").innerHTML="จบแบบทดสอบ";
+document.getElementById("choices").innerHTML="";
+document.getElementById("result").innerHTML="คะแนน: "+score+"/"+quiz.length;
+return;
+}
+
+let q = quiz[index];
+document.getElementById("question").innerHTML="❓ "+q.q;
+
+let html="";
+q.a.forEach((x,i)=>{
+html+=`<button class="choice" onclick="ans(${i})">${x}</button>`;
+});
+
+document.getElementById("choices").innerHTML=html;
+}
+
+function ans(i){
+let q = quiz[index];
+
+if(i===q.c){
+score++;
+document.getElementById("result").innerHTML="✔ ถูก";
+}else{
+score--;
+document.getElementById("result").innerHTML="❌ ผิด (-1)";
+}
+
+index++;
+setTimeout(load,500);
+}
+
+</script>
+
+</body>
+</html>
