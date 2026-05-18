@@ -3,116 +3,288 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>定位 Study + Quiz Pro</title>
+<title>定位 Study Game PRO</title>
 
 <style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
 body{
-  margin:0;
-  font-family: Arial;
-  background:#0b1220;
-  color:white;
+font-family:Arial,sans-serif;
+background:
+linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.88)),
+url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1600&auto=format&fit=crop');
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+color:white;
+overflow-x:hidden;
 }
 
-.header{
-  text-align:center;
-  padding:20px;
-  background:#111827;
+/* ================= HOME ================= */
+
+.home{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+padding:20px;
+animation:fade 1s ease;
 }
 
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:15px;
+.logo{
+font-size:80px;
+animation:float 3s infinite ease-in-out;
 }
 
-h2{
-  margin:0;
+.title{
+font-size:60px;
+font-weight:bold;
+margin-top:10px;
+text-shadow:0 0 25px #38bdf8;
 }
+
+.subtitle{
+margin-top:10px;
+font-size:18px;
+color:#cbd5e1;
+line-height:1.6;
+}
+
+.menu{
+margin-top:40px;
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.card{
+width:270px;
+padding:30px;
+border-radius:25px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(14px);
+border:1px solid rgba(255,255,255,.1);
+cursor:pointer;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.03);
+box-shadow:0 0 30px rgba(56,189,248,.5);
+}
+
+.card h2{
+font-size:30px;
+}
+
+.card p{
+margin-top:10px;
+color:#cbd5e1;
+}
+
+/* ================= SECTION ================= */
 
 .section{
-  margin-top:20px;
+display:none;
+max-width:1200px;
+margin:auto;
+padding:20px;
+animation:fade .6s ease;
+}
+
+.backBtn{
+margin-bottom:20px;
+padding:12px 20px;
+border:none;
+border-radius:12px;
+background:#ef4444;
+color:white;
+cursor:pointer;
+font-size:16px;
+}
+
+/* ================= TABLE ================= */
+
+.sectionTitle{
+margin-top:20px;
+margin-bottom:20px;
+font-size:34px;
+text-align:center;
+text-shadow:0 0 20px #38bdf8;
+}
+
+.cat{
+background:#172554;
+color:#7dd3fc;
+font-weight:bold;
+font-size:18px;
+padding:14px !important;
+text-align:center;
 }
 
 table{
-  width:100%;
-  border-collapse:collapse;
-  background:#0f172a;
-  border-radius:12px;
-  overflow:hidden;
+width:100%;
+border-collapse:collapse;
+background:rgba(15,23,42,.92);
+backdrop-filter:blur(10px);
+overflow:hidden;
+border-radius:20px;
 }
 
 th{
-  background:#1f2937;
-  padding:10px;
-  color:#93c5fd;
+background:#1e293b;
+padding:14px;
+color:#7dd3fc;
+font-size:18px;
 }
 
 td{
-  padding:8px;
-  border-bottom:1px solid #1f2937;
+padding:12px;
+border-bottom:1px solid rgba(255,255,255,.08);
+font-size:16px;
 }
 
-button{
-  width:100%;
-  padding:14px;
-  margin-top:15px;
-  border:none;
-  border-radius:10px;
-  cursor:pointer;
-  font-size:16px;
+tr:hover{
+background:rgba(255,255,255,.04);
 }
 
-.studyBtn{
-  background:#3b82f6;
-  color:white;
+/* ================= QUIZ ================= */
+
+.quizBox{
+background:rgba(15,23,42,.92);
+padding:25px;
+border-radius:25px;
+backdrop-filter:blur(12px);
+margin-top:25px;
 }
 
-.quizBtn{
-  background:#22c55e;
-  color:black;
-}
-
-.box{
-  display:none;
-  margin-top:20px;
-  padding:15px;
-  background:#0f172a;
-  border-radius:12px;
+.question{
+font-size:30px;
+margin-bottom:20px;
+line-height:1.5;
 }
 
 .choice{
-  background:#1f2937;
-  color:white;
-  margin:6px 0;
+width:100%;
+padding:15px;
+margin:8px 0;
+border:none;
+border-radius:14px;
+background:#1e293b;
+color:white;
+cursor:pointer;
+transition:.2s;
+font-size:16px;
 }
 
 .choice:hover{
-  background:#374151;
+background:#334155;
+transform:scale(1.02);
+}
+
+.score{
+margin-top:15px;
+font-size:22px;
+color:#7dd3fc;
 }
 
 .result{
-  text-align:center;
-  margin-top:10px;
-  font-size:18px;
+margin-top:20px;
+font-size:28px;
+text-align:center;
 }
+
+/* ================= ANIMATION ================= */
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-12px);}
+100%{transform:translateY(0);}
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="header">
-<h2>📍 定位 Study + Quiz PRO</h2>
-<p>by Sulawit Songsang</p>
+<!-- ================= HOME ================= -->
+
+<div class="home" id="home">
+
+<div class="logo">📍</div>
+
+<div class="title">
+定位 Study Game
 </div>
 
-<div class="container">
+<div class="subtitle">
+Learn Acupuncture Vocabulary Like a Game
+<br>
+by Sulawit Songsang
+</div>
 
-<!-- TABLE -->
-<div class="section">
-<h3>📘 ตารางคำศัพท์ทั้งหมด</h3>
+<div class="menu">
+
+<div class="card" onclick="openStudy()">
+<h2>📘 เริ่มเรียน</h2>
+<p>Study Mode + Vocabulary</p>
+</div>
+
+<div class="card" onclick="openQuiz()">
+<h2>🎮 เริ่มสอบ</h2>
+<p>2 Quiz Modes + Full Meridian</p>
+</div>
+
+<div class="card"
+onclick="window.open('https://sulawitacupuncture.vercel.app')">
+<h2>🌐 Website</h2>
+<p>เปิดเว็บไซต์ Sulawit Acupuncture</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- ================= STUDY ================= -->
+
+<div class="section" id="study">
+
+<button class="backBtn" onclick="goHome()">
+⬅ กลับหน้าแรก
+</button>
+
+<h2 class="sectionTitle">
+📘 定位 Vocabulary
+</h2>
 
 <table>
-<tr><th>中文</th><th>พินอิน</th><th>ไทย</th></tr>
+
+<tr>
+<th>中文</th>
+<th>Pinyin</th>
+<th>ไทย</th>
+</tr>
+
+<tr><td colspan="3" class="cat">✋ นิ้วมือ / นิ้วเท้า</td></tr>
 
 <tr><td>拇指</td><td>mǔ zhǐ</td><td>นิ้วโป้ง</td></tr>
 <tr><td>食指</td><td>shí zhǐ</td><td>นิ้วชี้</td></tr>
@@ -124,164 +296,484 @@ button{
 <tr><td>足二趾</td><td>zú èr zhǐ</td><td>นิ้วเท้าที่สอง</td></tr>
 <tr><td>足小趾</td><td>zú xiǎo zhǐ</td><td>นิ้วก้อยเท้า</td></tr>
 
+<tr><td colspan="3" class="cat">🧭 ด้านต่าง ๆ ของร่างกาย</td></tr>
+
 <tr><td>桡侧</td><td>ráo cè</td><td>ด้านนิ้วโป้ง</td></tr>
 <tr><td>尺侧</td><td>chǐ cè</td><td>ด้านนิ้วก้อย</td></tr>
-
-<tr><td>胫侧</td><td>jìng cè</td><td>ด้าน tibia</td></tr>
-<tr><td>腓侧</td><td>féi cè</td><td>ด้าน fibula</td></tr>
-
 <tr><td>内侧</td><td>nèi cè</td><td>ด้านใน</td></tr>
 <tr><td>外侧</td><td>wài cè</td><td>ด้านนอก</td></tr>
 
-<tr><td>前面</td><td>qián miàn</td><td>ด้านหน้า</td></tr>
-<tr><td>后面</td><td>hòu miàn</td><td>ด้านหลัง</td></tr>
-
-<tr><td>掌侧</td><td>zhǎng cè</td><td>ฝ่ามือ</td></tr>
-<tr><td>手背</td><td>shǒu bèi</td><td>หลังมือ</td></tr>
-
-<tr><td>足背</td><td>zú bèi</td><td>หลังเท้า</td></tr>
-<tr><td>足底</td><td>zú dǐ</td><td>ฝ่าเท้า</td></tr>
+<tr><td colspan="3" class="cat">📍 จุดสังเกตสำคัญ</td></tr>
 
 <tr><td>指甲</td><td>zhǐ jiǎ</td><td>เล็บ</td></tr>
 <tr><td>指甲角</td><td>zhǐ jiǎ jiǎo</td><td>มุมเล็บ</td></tr>
-
 <tr><td>横纹</td><td>héng wén</td><td>รอยพับ</td></tr>
+<tr><td>凹陷</td><td>āo xiàn</td><td>ร่องบุ๋ม</td></tr>
 
-<tr><td>腕横纹</td><td>wàn héng wén</td><td>รอยพับข้อมือ</td></tr>
-
-<tr><td>肘横纹</td><td>zhǒu héng wén</td><td>รอยพับข้อศอก</td></tr>
-
-<tr><td>腘横纹</td><td>guō héng wén</td><td>รอยพับเข่า</td></tr>
-
-<tr><td>凹陷中</td><td>āo xiàn zhōng</td><td>ร่องบุ๋ม</td></tr>
-
-<tr><td>乳头</td><td>rǔ tóu</td><td>หัวนม</td></tr>
-
-<tr><td>脐</td><td>qí</td><td>สะดือ</td></tr>
-
-<tr><td>后发际</td><td>hòu fà jì</td><td>ไรผมหลัง</td></tr>
-
-<tr><td>前发际</td><td>qián fà jì</td><td>ไรผมหน้า</td></tr>
-
-<tr><td>鼻尖</td><td>bí jiān</td><td>ปลายจมูก</td></tr>
-
-<tr><td>耳尖</td><td>ěr jiān</td><td>ปลายหู</td></tr>
+<tr><td colspan="3" class="cat">🦴 กระดูก / เอ็น / กล้ามเนื้อ</td></tr>
 
 <tr><td>骨</td><td>gǔ</td><td>กระดูก</td></tr>
-
 <tr><td>肌肉</td><td>jī ròu</td><td>กล้ามเนื้อ</td></tr>
-
 <tr><td>肌腱</td><td>jī jiàn</td><td>เอ็น</td></tr>
 
-<tr><td>两筋之间</td><td>liǎng jīn zhī jiān</td><td>ระหว่างเอ็น</td></tr>
+<tr><td colspan="3" class="cat">📐 คำบอกตำแหน่ง</td></tr>
 
-<tr><td>尺骨</td><td>chǐ gǔ</td><td>ulna</td></tr>
-
-<tr><td>桡骨</td><td>ráo gǔ</td><td>radius</td></tr>
-
-<tr><td>胫骨</td><td>jìng gǔ</td><td>tibia</td></tr>
-
-<tr><td>腓骨</td><td>féi gǔ</td><td>fibula</td></tr>
-
-<tr><td>锁骨</td><td>suǒ gǔ</td><td>ไหปลาร้า</td></tr>
-
-<tr><td>肩胛骨</td><td>jiān jiǎ gǔ</td><td>สะบัก</td></tr>
-
-<tr><td>脊柱</td><td>jǐ zhù</td><td>กระดูกสันหลัง</td></tr>
-
-<tr><td>上</td><td>shàng</td><td>บน</td></tr>
-
-<tr><td>下</td><td>xià</td><td>ล่าง</td></tr>
-
-<tr><td>前</td><td>qián</td><td>หน้า</td></tr>
-
-<tr><td>后</td><td>hòu</td><td>หลัง</td></tr>
-
-<tr><td>内</td><td>nèi</td><td>ใน</td></tr>
-
-<tr><td>外</td><td>wài</td><td>นอก</td></tr>
-
-<tr><td>中</td><td>zhōng</td><td>กลาง</td></tr>
-
-<tr><td>旁开</td><td>páng kāi</td><td>เยื้อง</td></tr>
-
-<tr><td>直上</td><td>zhí shàng</td><td>ตรงขึ้น</td></tr>
-
-<tr><td>直下</td><td>zhí xià</td><td>ตรงลง</td></tr>
-
-<tr><td>之间</td><td>zhī jiān</td><td>ระหว่าง</td></tr>
-
-<tr><td>中点</td><td>zhōng diǎn</td><td>จุดกึ่งกลาง</td></tr>
+<tr><td>上</td><td>shàng</td><td>ด้านบน</td></tr>
+<tr><td>下</td><td>xià</td><td>ด้านล่าง</td></tr>
+<tr><td>前</td><td>qián</td><td>ด้านหน้า</td></tr>
+<tr><td>后</td><td>hòu</td><td>ด้านหลัง</td></tr>
+<tr><td>中</td><td>zhōng</td><td>ตรงกลาง</td></tr>
 
 </table>
+
 </div>
 
-<!-- BUTTON -->
-<button class="studyBtn" onclick="alert('อ่านตารางด้านบนได้เลย')">📘 Study Mode</button>
-<button class="quizBtn" onclick="startQuiz()">🎯 Start Quiz (ต้องผ่าน 100%)</button>
+<!-- ================= QUIZ ================= -->
 
-<!-- QUIZ -->
-<div class="box" id="quizBox">
-<h3 id="q"></h3>
-<div id="ans"></div>
-<div class="result" id="res"></div>
+<div class="section" id="quiz">
+
+<button class="backBtn" onclick="goHome()">
+⬅ กลับหน้าแรก
+</button>
+
+<h2 class="sectionTitle">
+🎮 Quiz Mode
+</h2>
+
+<div class="menu">
+
+<div class="card" onclick="startQuizMeridian()">
+<h2>🧠 Quiz 1</h2>
+<p>穴位 + 拼音 → 归经</p>
+</div>
+
+<div class="card" onclick="startQuizPoint()">
+<h2>⚡ Quiz 2</h2>
+<p>归经 → 穴位 + 拼音</p>
+</div>
+
+</div>
+
+<div class="quizBox">
+
+<div class="question" id="question"></div>
+
+<div id="answers"></div>
+
+<div class="score">
+คะแนน: <span id="score">0</span>
+</div>
+
+<div class="result" id="result"></div>
+
 </div>
 
 </div>
 
 <script>
 
-const quiz=[
-{q:"桡侧 คืออะไร?",a:["ด้านนิ้วโป้ง","ด้านนิ้วก้อย","ด้านใน","ด้านหลัง"],c:0},
-{q:"尺侧 คืออะไร?",a:["ด้านนิ้วก้อย","ด้านนิ้วโป้ง","ด้านหน้า","ด้านบน"],c:0},
-{q:"凹陷中 คืออะไร?",a:["ร่องบุ๋ม","กระดูก","เอ็น","กล้ามเนื้อ"],c:0},
-{q:"横纹 คืออะไร?",a:["รอยพับ","เส้นเลือด","กระดูก","ผิวหนัง"],c:0},
-{q:"两筋之间 คืออะไร?",a:["ระหว่างเอ็น","ใต้เล็บ","บนหัว","ฝ่าเท้า"],c:0}
-];
+/* ================= PAGE ================= */
 
-let i=0;
-let score=0;
-
-function startQuiz(){
-document.getElementById("quizBox").style.display="block";
-load();
+function openStudy(){
+hideAll();
+document.getElementById("study").style.display="block";
+window.scrollTo(0,0);
 }
 
-function load(){
-if(i>=quiz.length){
-finish();
+function openQuiz(){
+hideAll();
+document.getElementById("quiz").style.display="block";
+window.scrollTo(0,0);
+}
+
+function goHome(){
+hideAll();
+document.getElementById("home").style.display="flex";
+}
+
+function hideAll(){
+document.getElementById("home").style.display="none";
+document.getElementById("study").style.display="none";
+document.getElementById("quiz").style.display="none";
+}
+
+/* ================= QUIZ ================= */
+
+let currentQuiz=[];
+let current=0;
+let score=0;
+
+/* ================= QUIZ 1 ================= */
+
+const quizMeridian=[
+
+{
+q:"中府 (Zhōngfǔ) 属于什么归经？",
+a:["LU 肺经","LI 大肠经","SP 脾经","KI 肾经"],
+c:0
+},
+
+{
+q:"尺泽 (Chǐzé) 属于什么归经？",
+a:["LU 肺经","HT 心经","SJ 三焦经","GB 胆经"],
+c:0
+},
+
+{
+q:"合谷 (Hégǔ) 属于什么归经？",
+a:["LI 大肠经","ST 胃经","GB 胆经","SP 脾经"],
+c:0
+},
+
+{
+q:"足三里 (Zúsānlǐ) 属于什么归经？",
+a:["ST 胃经","SP 脾经","GB 胆经","LR 肝经"],
+c:0
+},
+
+{
+q:"三阴交 (Sānyīnjiāo) 属于什么归经？",
+a:["SP 脾经","KI 肾经","HT 心经","LU 肺经"],
+c:0
+},
+
+{
+q:"神门 (Shénmén) 属于什么归经？",
+a:["HT 心经","PC 心包经","GB 胆经","SJ 三焦经"],
+c:0
+},
+
+{
+q:"后溪 (Hòuxī) 属于什么归经？",
+a:["SI 小肠经","BL 膀胱经","GB 胆经","HT 心经"],
+c:0
+},
+
+{
+q:"委中 (Wěizhōng) 属于什么归经？",
+a:["BL 膀胱经","KI 肾经","ST 胃经","LR 肝经"],
+c:0
+},
+
+{
+q:"太溪 (Tàixī) 属于什么归经？",
+a:["KI 肾经","SP 脾经","LU 肺经","PC 心包经"],
+c:0
+},
+
+{
+q:"内关 (Nèiguān) 属于什么归经？",
+a:["PC 心包经","HT 心经","SJ 三焦经","GB 胆经"],
+c:0
+},
+
+{
+q:"外关 (Wàiguān) 属于什么归经？",
+a:["SJ 三焦经","PC 心包经","LI 大肠经","GB 胆经"],
+c:0
+},
+
+{
+q:"风池 (Fēngchí) 属于什么归经？",
+a:["GB 胆经","BL 膀胱经","DU 督脉","EX 奇穴"],
+c:0
+},
+
+{
+q:"太冲 (Tàichōng) 属于什么归经？",
+a:["LR 肝经","SP 脾经","HT 心经","KI 肾经"],
+c:0
+},
+
+{
+q:"百会 (Bǎihuì) 属于什么归经？",
+a:["DU 督脉","REN 任脉","GB 胆经","EX 奇穴"],
+c:0
+},
+
+{
+q:"关元 (Guānyuán) 属于什么归经？",
+a:["REN 任脉","DU 督脉","SP 脾经","KI 肾经"],
+c:0
+},
+
+{
+q:"太阳 (Tàiyáng) 属于什么归经？",
+a:["EX 奇穴","GB 胆经","DU 督脉","ST 胃经"],
+c:0
+}
+
+];
+
+/* ================= QUIZ 2 ================= */
+
+const quizPoint=[
+
+{
+q:"LU 肺经 的穴位是？",
+a:[
+"中府 (Zhōngfǔ)",
+"合谷 (Hégǔ)",
+"太冲 (Tàichōng)",
+"百会 (Bǎihuì)"
+],
+c:0
+},
+
+{
+q:"LI 大肠经 的穴位是？",
+a:[
+"风池 (Fēngchí)",
+"合谷 (Hégǔ)",
+"内关 (Nèiguān)",
+"神门 (Shénmén)"
+],
+c:1
+},
+
+{
+q:"ST 胃经 的穴位是？",
+a:[
+"足三里 (Zúsānlǐ)",
+"太溪 (Tàixī)",
+"风池 (Fēngchí)",
+"大敦 (Dàdūn)"
+],
+c:0
+},
+
+{
+q:"SP 脾经 的穴位是？",
+a:[
+"三阴交 (Sānyīnjiāo)",
+"列缺 (Lièquē)",
+"外关 (Wàiguān)",
+"百会 (Bǎihuì)"
+],
+c:0
+},
+
+{
+q:"HT 心经 的穴位是？",
+a:[
+"神门 (Shénmén)",
+"太冲 (Tàichōng)",
+"合谷 (Hégǔ)",
+"风池 (Fēngchí)"
+],
+c:0
+},
+
+{
+q:"SI 小肠经 的穴位是？",
+a:[
+"后溪 (Hòuxī)",
+"内关 (Nèiguān)",
+"足三里 (Zúsānlǐ)",
+"太溪 (Tàixī)"
+],
+c:0
+},
+
+{
+q:"BL 膀胱经 的穴位是？",
+a:[
+"委中 (Wěizhōng)",
+"三阴交 (Sānyīnjiāo)",
+"曲池 (Qūchí)",
+"劳宫 (Láogōng)"
+],
+c:0
+},
+
+{
+q:"KI 肾经 的穴位是？",
+a:[
+"太溪 (Tàixī)",
+"迎香 (Yíngxiāng)",
+"风池 (Fēngchí)",
+"百会 (Bǎihuì)"
+],
+c:0
+},
+
+{
+q:"PC 心包经 的穴位是？",
+a:[
+"内关 (Nèiguān)",
+"神门 (Shénmén)",
+"外关 (Wàiguān)",
+"曲池 (Qūchí)"
+],
+c:0
+},
+
+{
+q:"SJ 三焦经 的穴位是？",
+a:[
+"外关 (Wàiguān)",
+"太冲 (Tàichōng)",
+"三阴交 (Sānyīnjiāo)",
+"合谷 (Hégǔ)"
+],
+c:0
+},
+
+{
+q:"GB 胆经 的穴位是？",
+a:[
+"风池 (Fēngchí)",
+"太溪 (Tàixī)",
+"神门 (Shénmén)",
+"列缺 (Lièquē)"
+],
+c:0
+},
+
+{
+q:"LR 肝经 的穴位是？",
+a:[
+"太冲 (Tàichōng)",
+"合谷 (Hégǔ)",
+"内庭 (Nèitíng)",
+"外关 (Wàiguān)"
+],
+c:0
+},
+
+{
+q:"DU 督脉 的穴位是？",
+a:[
+"百会 (Bǎihuì)",
+"神门 (Shénmén)",
+"风池 (Fēngchí)",
+"内关 (Nèiguān)"
+],
+c:0
+},
+
+{
+q:"REN 任脉 的穴位是？",
+a:[
+"关元 (Guānyuán)",
+"足三里 (Zúsānlǐ)",
+"曲池 (Qūchí)",
+"风池 (Fēngchí)"
+],
+c:0
+},
+
+{
+q:"EX 奇穴 的穴位是？",
+a:[
+"太阳 (Tàiyáng)",
+"合谷 (Hégǔ)",
+"太冲 (Tàichōng)",
+"外关 (Wàiguān)"
+],
+c:0
+}
+
+];
+
+/* ================= START QUIZ ================= */
+
+function startQuizMeridian(){
+currentQuiz=quizMeridian;
+startGame();
+}
+
+function startQuizPoint(){
+currentQuiz=quizPoint;
+startGame();
+}
+
+function startGame(){
+
+current=0;
+score=0;
+
+document.getElementById("score").innerText=score;
+document.getElementById("result").innerHTML="";
+
+loadQuestion();
+
+}
+
+/* ================= LOAD QUESTION ================= */
+
+function loadQuestion(){
+
+if(current>=currentQuiz.length){
+finishQuiz();
 return;
 }
 
-let q=quiz[i];
-document.getElementById("q").innerText=q.q;
+let q=currentQuiz[current];
+
+document.getElementById("question").innerText=q.q;
 
 let html="";
-q.a.forEach((x,idx)=>{
-html+=`<button class='choice' onclick='ans(${idx})'>${x}</button>`;
+
+q.a.forEach((x,i)=>{
+
+html+=`
+<button class="choice"
+onclick="check(${i})">
+${x}
+</button>
+`;
+
 });
 
-document.getElementById("ans").innerHTML=html;
+document.getElementById("answers").innerHTML=html;
+
 }
 
-function ans(x){
-if(x===quiz[i].c) score++;
-else score-=2;
+/* ================= CHECK ================= */
 
-document.getElementById("res").innerText="คะแนน: "+score;
+function check(i){
 
-i++;
-setTimeout(load,400);
-}
+if(i===currentQuiz[current].c){
 
-function finish(){
-document.getElementById("q").innerText="จบแบบทดสอบ";
+score++;
 
-if(score===quiz.length){
-document.getElementById("ans").innerHTML="🎉 ผ่าน! คุณได้คะแนนเต็ม";
 }else{
-document.getElementById("ans").innerHTML="❌ ไม่ผ่าน ต้องได้เต็มเท่านั้น";
+
+score-=2;
+
 }
+
+document.getElementById("score").innerText=score;
+
+current++;
+
+setTimeout(loadQuestion,300);
+
+}
+
+/* ================= FINISH ================= */
+
+function finishQuiz(){
+
+document.getElementById("answers").innerHTML="";
+
+if(score===currentQuiz.length){
+
+document.getElementById("result").innerHTML=
+"🎉 PERFECT! ผ่าน 100%";
+
+document.getElementById("result").style.color="#22c55e";
+
+}else{
+
+document.getElementById("result").innerHTML=
+"❌ ไม่ผ่าน ต้องได้คะแนนเต็มเท่านั้น";
+
+document.getElementById("result").style.color="#ef4444";
+
+}
+
 }
 
 </script>
