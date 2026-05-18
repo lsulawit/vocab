@@ -455,290 +455,292 @@ let currentQuiz=[];
 let current=0;
 let score=0;
 
-/* ================= QUIZ 1 ================= */
+/* ================= DATABASE ================= */
 
-const quizMeridian=[
+const meridians={
 
-{
-q:"中府 (Zhōngfǔ) 属于什么归经？",
-a:["LU 肺经","LI 大肠经","SP 脾经","KI 肾经"],
-c:0
-},
+"LU 肺经":[
+["中府","Zhōngfǔ"],
+["尺泽","Chǐzé"],
+["孔最","Kǒngzuì"],
+["列缺","Lièquē"],
+["太渊","Tàiyuān"],
+["鱼际","Yújì"],
+["少商","Shàoshāng"]
+],
 
-{
-q:"尺泽 (Chǐzé) 属于什么归经？",
-a:["LU 肺经","HT 心经","SJ 三焦经","GB 胆经"],
-c:0
-},
+"LI 大肠经":[
+["商阳","Shāngyáng"],
+["合谷","Hégǔ"],
+["偏历","Piānlì"],
+["手三里","Shǒusānlǐ"],
+["曲池","Qūchí"],
+["扶突","Fútū"],
+["迎香","Yíngxiāng"]
+],
 
-{
-q:"合谷 (Hégǔ) 属于什么归经？",
-a:["LI 大肠经","ST 胃经","GB 胆经","SP 脾经"],
-c:0
-},
+"ST 胃经":[
+["承泣","Chéngqì"],
+["四白","Sìbái"],
+["地仓","Dìcāng"],
+["颊车","Jiáchē"],
+["下关","Xiàguān"],
+["头维","Tóuwéi"],
+["人迎","Rényíng"],
+["缺盆","Quēpén"],
+["足三里","Zúsānlǐ"],
+["上巨虚","Shàngjùxū"],
+["条口","Tiáokǒu"],
+["下巨虚","Xiàjùxū"],
+["丰隆","Fēnglóng"],
+["解溪","Jiěxī"],
+["内庭","Nèitíng"],
+["厉兑","Lìduì"]
+],
 
-{
-q:"足三里 (Zúsānlǐ) 属于什么归经？",
-a:["ST 胃经","SP 脾经","GB 胆经","LR 肝经"],
-c:0
-},
+"SP 脾经":[
+["隐白","Yǐnbái"],
+["太白","Tàibái"],
+["公孙","Gōngsūn"],
+["商丘","Shāngqiū"],
+["三阴交","Sānyīnjiāo"],
+["地机","Dìjī"],
+["阴陵泉","Yīnlíngquán"],
+["大横","Dàhéng"]
+],
 
-{
-q:"三阴交 (Sānyīnjiāo) 属于什么归经？",
-a:["SP 脾经","KI 肾经","HT 心经","LU 肺经"],
-c:0
-},
+"HT 心经":[
+["少海","Shàohǎi"],
+["通里","Tōnglǐ"],
+["神门","Shénmén"],
+["少府","Shàofǔ"],
+["少冲","Shàochōng"]
+],
 
-{
-q:"神门 (Shénmén) 属于什么归经？",
-a:["HT 心经","PC 心包经","GB 胆经","SJ 三焦经"],
-c:0
-},
+"SI 小肠经":[
+["少泽","Shàozé"],
+["后溪","Hòuxī"],
+["腕骨","Wàngǔ"],
+["养老","Yǎnglǎo"],
+["支正","Zhīzhèng"],
+["小海","Xiǎohǎi"],
+["天宗","Tiānzōng"],
+["听宫","Tīnggōng"]
+],
 
-{
-q:"后溪 (Hòuxī) 属于什么归经？",
-a:["SI 小肠经","BL 膀胱经","GB 胆经","HT 心经"],
-c:0
-},
+"BL 膀胱经":[
+["睛明","Jīngmíng"],
+["攒竹","Cuánzhú"],
+["天柱","Tiānzhù"],
+["肺俞","Fèishū"],
+["膈俞","Géshū"],
+["肾俞","Shènshū"],
+["大肠俞","Dàchángshū"],
+["次髎","Cìliáo"],
+["秩边","Zhìbiān"],
+["委阳","Wěiyáng"],
+["委中","Wěizhōng"],
+["承山","Chéngshān"],
+["昆仑","Kūnlún"],
+["申脉","Shēnmài"],
+["至阴","Zhìyīn"]
+],
 
-{
-q:"委中 (Wěizhōng) 属于什么归经？",
-a:["BL 膀胱经","KI 肾经","ST 胃经","LR 肝经"],
-c:0
-},
+"KI 肾经":[
+["涌泉","Yǒngquán"],
+["然谷","Rángǔ"],
+["太溪","Tàixī"],
+["大钟","Dàzhōng"],
+["照海","Zhàohǎi"],
+["复溜","Fùliū"]
+],
 
-{
-q:"太溪 (Tàixī) 属于什么归经？",
-a:["KI 肾经","SP 脾经","LU 肺经","PC 心包经"],
-c:0
-},
+"PC 心包经":[
+["曲泽","Qūzé"],
+["郄门","Xìmén"],
+["间使","Jiānshǐ"],
+["内关","Nèiguān"],
+["大陵","Dàlíng"],
+["劳宫","Láogōng"],
+["中冲","Zhōngchōng"]
+],
 
-{
-q:"内关 (Nèiguān) 属于什么归经？",
-a:["PC 心包经","HT 心经","SJ 三焦经","GB 胆经"],
-c:0
-},
+"SJ 三焦经":[
+["关冲","Guānchōng"],
+["中渚","Zhōngzhǔ"],
+["阳池","Yángchí"],
+["外关","Wàiguān"],
+["支沟","Zhīgōu"],
+["翳风","Yìfēng"],
+["角孙","Jiǎosūn"],
+["耳门","Ěrmén"],
+["丝竹空","Sīzhúkōng"]
+],
 
-{
-q:"外关 (Wàiguān) 属于什么归经？",
-a:["SJ 三焦经","PC 心包经","LI 大肠经","GB 胆经"],
-c:0
-},
+"GB 胆经":[
+["瞳子髎","Tóngzǐliáo"],
+["听会","Tīnghuì"],
+["率谷","Shuàigǔ"],
+["完骨","Wángǔ"],
+["阳白","Yángbái"],
+["风池","Fēngchí"],
+["环跳","Huántiào"],
+["阳陵泉","Yánglíngquán"],
+["悬钟","Xuánzhōng"],
+["丘墟","Qiūxū"],
+["足临泣","Zúlínqì"],
+["侠溪","Xiáxī"],
+["足窍阴","Zúqiàoyīn"]
+],
 
-{
-q:"风池 (Fēngchí) 属于什么归经？",
-a:["GB 胆经","BL 膀胱经","DU 督脉","EX 奇穴"],
-c:0
-},
+"LR 肝经":[
+["大敦","Dàdūn"],
+["行间","Xíngjiān"],
+["太冲","Tàichōng"],
+["蠡沟","Lǐgōu"],
+["曲泉","Qūquán"],
+["章门","Zhāngmén"]
+],
 
-{
-q:"太冲 (Tàichōng) 属于什么归经？",
-a:["LR 肝经","SP 脾经","HT 心经","KI 肾经"],
-c:0
-},
+"DU 督脉":[
+["腰阳关","Yāoyángguān"],
+["命门","Mìngmén"],
+["大椎","Dàzhuī"],
+["风府","Fēngfǔ"],
+["百会","Bǎihuì"],
+["神庭","Shéntíng"],
+["素髎","Sùliáo"],
+["水沟","Shuǐgōu"],
+["印堂","Yìntáng"]
+],
 
-{
-q:"百会 (Bǎihuì) 属于什么归经？",
-a:["DU 督脉","REN 任脉","GB 胆经","EX 奇穴"],
-c:0
-},
+"REN 任脉":[
+["关元","Guānyuán"],
+["气海","Qìhǎi"],
+["神阙","Shénquè"],
+["中脘","Zhōngwǎn"],
+["天突","Tiāntū"],
+["廉泉","Liánquán"],
+["承浆","Chéngjiāng"]
+],
 
-{
-q:"关元 (Guānyuán) 属于什么归经？",
-a:["REN 任脉","DU 督脉","SP 脾经","KI 肾经"],
-c:0
-},
+"EX 奇穴":[
+["太阳","Tàiyáng"],
+["耳尖","Ěrjiān"],
+["定喘","Dìngchuǎn"],
+["夹脊","Jiājǐ"],
+["二白","Èrbái"],
+["腰痛点","Yāotòngdiǎn"],
+["八邪","Bāxié"],
+["四缝","Sìfèng"],
+["十宣","Shíxuān"],
+["胆囊","Dǎnnáng"],
+["阑尾","Lánwěi"]
+]
 
-{
-q:"太阳 (Tàiyáng) 属于什么归经？",
-a:["EX 奇穴","GB 胆经","DU 督脉","ST 胃经"],
-c:0
+};
+
+/* ================= GENERATE QUIZ ================= */
+
+function generateQuizMeridian(){
+
+let quiz=[];
+const keys=Object.keys(meridians);
+
+for(let meridian in meridians){
+
+meridians[meridian].forEach(point=>{
+
+let wrong=keys
+.filter(x=>x!==meridian)
+.sort(()=>Math.random()-0.5)
+.slice(0,3);
+
+let choices=[meridian,...wrong]
+.sort(()=>Math.random()-0.5);
+
+quiz.push({
+
+q:`${point[0]} (${point[1]}) 属于什么归经？`,
+a:choices,
+c:choices.indexOf(meridian)
+
+});
+
+});
+
 }
 
-];
+return quiz.sort(()=>Math.random()-0.5);
 
-/* ================= QUIZ 2 ================= */
-
-const quizPoint=[
-
-{
-q:"LU 肺经 的穴位是？",
-a:[
-"中府 (Zhōngfǔ)",
-"合谷 (Hégǔ)",
-"太冲 (Tàichōng)",
-"百会 (Bǎihuì)"
-],
-c:0
-},
-
-{
-q:"LI 大肠经 的穴位是？",
-a:[
-"风池 (Fēngchí)",
-"合谷 (Hégǔ)",
-"内关 (Nèiguān)",
-"神门 (Shénmén)"
-],
-c:1
-},
-
-{
-q:"ST 胃经 的穴位是？",
-a:[
-"足三里 (Zúsānlǐ)",
-"太溪 (Tàixī)",
-"风池 (Fēngchí)",
-"大敦 (Dàdūn)"
-],
-c:0
-},
-
-{
-q:"SP 脾经 的穴位是？",
-a:[
-"三阴交 (Sānyīnjiāo)",
-"列缺 (Lièquē)",
-"外关 (Wàiguān)",
-"百会 (Bǎihuì)"
-],
-c:0
-},
-
-{
-q:"HT 心经 的穴位是？",
-a:[
-"神门 (Shénmén)",
-"太冲 (Tàichōng)",
-"合谷 (Hégǔ)",
-"风池 (Fēngchí)"
-],
-c:0
-},
-
-{
-q:"SI 小肠经 的穴位是？",
-a:[
-"后溪 (Hòuxī)",
-"内关 (Nèiguān)",
-"足三里 (Zúsānlǐ)",
-"太溪 (Tàixī)"
-],
-c:0
-},
-
-{
-q:"BL 膀胱经 的穴位是？",
-a:[
-"委中 (Wěizhōng)",
-"三阴交 (Sānyīnjiāo)",
-"曲池 (Qūchí)",
-"劳宫 (Láogōng)"
-],
-c:0
-},
-
-{
-q:"KI 肾经 的穴位是？",
-a:[
-"太溪 (Tàixī)",
-"迎香 (Yíngxiāng)",
-"风池 (Fēngchí)",
-"百会 (Bǎihuì)"
-],
-c:0
-},
-
-{
-q:"PC 心包经 的穴位是？",
-a:[
-"内关 (Nèiguān)",
-"神门 (Shénmén)",
-"外关 (Wàiguān)",
-"曲池 (Qūchí)"
-],
-c:0
-},
-
-{
-q:"SJ 三焦经 的穴位是？",
-a:[
-"外关 (Wàiguān)",
-"太冲 (Tàichōng)",
-"三阴交 (Sānyīnjiāo)",
-"合谷 (Hégǔ)"
-],
-c:0
-},
-
-{
-q:"GB 胆经 的穴位是？",
-a:[
-"风池 (Fēngchí)",
-"太溪 (Tàixī)",
-"神门 (Shénmén)",
-"列缺 (Lièquē)"
-],
-c:0
-},
-
-{
-q:"LR 肝经 的穴位是？",
-a:[
-"太冲 (Tàichōng)",
-"合谷 (Hégǔ)",
-"内庭 (Nèitíng)",
-"外关 (Wàiguān)"
-],
-c:0
-},
-
-{
-q:"DU 督脉 的穴位是？",
-a:[
-"百会 (Bǎihuì)",
-"神门 (Shénmén)",
-"风池 (Fēngchí)",
-"内关 (Nèiguān)"
-],
-c:0
-},
-
-{
-q:"REN 任脉 的穴位是？",
-a:[
-"关元 (Guānyuán)",
-"足三里 (Zúsānlǐ)",
-"曲池 (Qūchí)",
-"风池 (Fēngchí)"
-],
-c:0
-},
-
-{
-q:"EX 奇穴 的穴位是？",
-a:[
-"太阳 (Tàiyáng)",
-"合谷 (Hégǔ)",
-"太冲 (Tàichōng)",
-"外关 (Wàiguān)"
-],
-c:0
 }
 
-];
+function generateQuizPoint(){
+
+let quiz=[];
+
+for(let meridian in meridians){
+
+meridians[meridian].forEach(point=>{
+
+let all=[];
+
+for(let other in meridians){
+
+if(other!==meridian){
+
+all.push(...meridians[other]);
+
+}
+
+}
+
+let wrong=all
+.sort(()=>Math.random()-0.5)
+.slice(0,3);
+
+let correct=`${point[0]} (${point[1]})`;
+
+let choices=[
+correct,
+...wrong.map(x=>`${x[0]} (${x[1]})`)
+].sort(()=>Math.random()-0.5);
+
+quiz.push({
+
+q:`${meridian} 的穴位是？`,
+a:choices,
+c:choices.indexOf(correct)
+
+});
+
+});
+
+}
+
+return quiz.sort(()=>Math.random()-0.5);
+
+}
 
 /* ================= START QUIZ ================= */
 
 function startQuizMeridian(){
-currentQuiz=quizMeridian;
+
+currentQuiz=generateQuizMeridian();
+
 startGame();
+
 }
 
 function startQuizPoint(){
-currentQuiz=quizPoint;
+
+currentQuiz=generateQuizPoint();
+
 startGame();
+
 }
+
+/* ================= START GAME ================= */
 
 function startGame(){
 
@@ -757,8 +759,10 @@ loadQuestion();
 function loadQuestion(){
 
 if(current>=currentQuiz.length){
+
 finishQuiz();
 return;
+
 }
 
 let q=currentQuiz[current];
@@ -786,11 +790,22 @@ document.getElementById("answers").innerHTML=html;
 
 function check(i){
 
+let buttons=document.querySelectorAll(".choice");
+
+buttons.forEach(btn=>btn.disabled=true);
+
 if(i===currentQuiz[current].c){
+
+buttons[i].style.background="#22c55e";
 
 score++;
 
 }else{
+
+buttons[i].style.background="#ef4444";
+
+buttons[currentQuiz[current].c]
+.style.background="#22c55e";
 
 score-=2;
 
@@ -800,7 +815,7 @@ document.getElementById("score").innerText=score;
 
 current++;
 
-setTimeout(loadQuestion,300);
+setTimeout(loadQuestion,1000);
 
 }
 
@@ -810,21 +825,13 @@ function finishQuiz(){
 
 document.getElementById("answers").innerHTML="";
 
-if(score===currentQuiz.length){
+document.getElementById("question").innerHTML=
+"🎉 Quiz Complete";
 
 document.getElementById("result").innerHTML=
-"🎉 PERFECT! ผ่าน 100%";
+`คะแนนสุดท้าย: ${score}`;
 
-document.getElementById("result").style.color="#22c55e";
-
-}else{
-
-document.getElementById("result").innerHTML=
-"❌ ไม่ผ่าน ต้องได้คะแนนเต็มเท่านั้น";
-
-document.getElementById("result").style.color="#ef4444";
-
-}
+document.getElementById("result").style.color="#38bdf8";
 
 }
 
