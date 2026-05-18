@@ -3,38 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>定位 Study + Quiz</title>
+<title>定位 Study + Quiz Pro</title>
 
 <style>
 body{
   margin:0;
   font-family: Arial;
-  background:#0f172a;
+  background:#0b1220;
   color:white;
 }
 
 .header{
   text-align:center;
   padding:20px;
+  background:#111827;
 }
 
 .container{
-  max-width:1000px;
+  max-width:1100px;
   margin:auto;
-  padding:10px;
+  padding:15px;
+}
+
+h2{
+  margin:0;
+}
+
+.section{
+  margin-top:20px;
 }
 
 table{
   width:100%;
   border-collapse:collapse;
-  background:#111827;
-  border-radius:10px;
+  background:#0f172a;
+  border-radius:12px;
   overflow:hidden;
 }
 
 th{
   background:#1f2937;
   padding:10px;
+  color:#93c5fd;
 }
 
 td{
@@ -42,15 +52,9 @@ td{
   border-bottom:1px solid #1f2937;
 }
 
-.section-title{
-  margin-top:20px;
-  font-size:18px;
-  color:#93c5fd;
-}
-
 button{
-  padding:12px;
   width:100%;
+  padding:14px;
   margin-top:15px;
   border:none;
   border-radius:10px;
@@ -58,16 +62,21 @@ button{
   font-size:16px;
 }
 
-.start{
+.studyBtn{
+  background:#3b82f6;
+  color:white;
+}
+
+.quizBtn{
   background:#22c55e;
   color:black;
 }
 
-.quiz-box{
+.box{
   display:none;
   margin-top:20px;
-  background:#0b1220;
   padding:15px;
+  background:#0f172a;
   border-radius:12px;
 }
 
@@ -92,14 +101,15 @@ button{
 <body>
 
 <div class="header">
-<h2>📍 定位 Study + Quiz</h2>
+<h2>📍 定位 Study + Quiz PRO</h2>
 <p>by Sulawit Songsang</p>
 </div>
 
 <div class="container">
 
 <!-- TABLE -->
-<div class="section-title">📘 ตารางคำศัพท์</div>
+<div class="section">
+<h3>📘 ตารางคำศัพท์ทั้งหมด</h3>
 
 <table>
 <tr><th>中文</th><th>พินอิน</th><th>ไทย</th></tr>
@@ -110,15 +120,52 @@ button{
 <tr><td>无名指</td><td>wú míng zhǐ</td><td>นิ้วนาง</td></tr>
 <tr><td>小指</td><td>xiǎo zhǐ</td><td>นิ้วก้อย</td></tr>
 
+<tr><td>足大趾</td><td>zú dà zhǐ</td><td>นิ้วโป้งเท้า</td></tr>
+<tr><td>足二趾</td><td>zú èr zhǐ</td><td>นิ้วเท้าที่สอง</td></tr>
+<tr><td>足小趾</td><td>zú xiǎo zhǐ</td><td>นิ้วก้อยเท้า</td></tr>
+
 <tr><td>桡侧</td><td>ráo cè</td><td>ด้านนิ้วโป้ง</td></tr>
 <tr><td>尺侧</td><td>chǐ cè</td><td>ด้านนิ้วก้อย</td></tr>
+
+<tr><td>胫侧</td><td>jìng cè</td><td>ด้าน tibia</td></tr>
+<tr><td>腓侧</td><td>féi cè</td><td>ด้าน fibula</td></tr>
 
 <tr><td>内侧</td><td>nèi cè</td><td>ด้านใน</td></tr>
 <tr><td>外侧</td><td>wài cè</td><td>ด้านนอก</td></tr>
 
+<tr><td>前面</td><td>qián miàn</td><td>ด้านหน้า</td></tr>
+<tr><td>后面</td><td>hòu miàn</td><td>ด้านหลัง</td></tr>
+
+<tr><td>掌侧</td><td>zhǎng cè</td><td>ฝ่ามือ</td></tr>
+<tr><td>手背</td><td>shǒu bèi</td><td>หลังมือ</td></tr>
+
+<tr><td>足背</td><td>zú bèi</td><td>หลังเท้า</td></tr>
+<tr><td>足底</td><td>zú dǐ</td><td>ฝ่าเท้า</td></tr>
+
+<tr><td>指甲</td><td>zhǐ jiǎ</td><td>เล็บ</td></tr>
+<tr><td>指甲角</td><td>zhǐ jiǎ jiǎo</td><td>มุมเล็บ</td></tr>
+
 <tr><td>横纹</td><td>héng wén</td><td>รอยพับ</td></tr>
 
-<tr><td>凹陷中</td><td>āo xiàn zhōng</td><td>ในร่องบุ๋ม</td></tr>
+<tr><td>腕横纹</td><td>wàn héng wén</td><td>รอยพับข้อมือ</td></tr>
+
+<tr><td>肘横纹</td><td>zhǒu héng wén</td><td>รอยพับข้อศอก</td></tr>
+
+<tr><td>腘横纹</td><td>guō héng wén</td><td>รอยพับเข่า</td></tr>
+
+<tr><td>凹陷中</td><td>āo xiàn zhōng</td><td>ร่องบุ๋ม</td></tr>
+
+<tr><td>乳头</td><td>rǔ tóu</td><td>หัวนม</td></tr>
+
+<tr><td>脐</td><td>qí</td><td>สะดือ</td></tr>
+
+<tr><td>后发际</td><td>hòu fà jì</td><td>ไรผมหลัง</td></tr>
+
+<tr><td>前发际</td><td>qián fà jì</td><td>ไรผมหน้า</td></tr>
+
+<tr><td>鼻尖</td><td>bí jiān</td><td>ปลายจมูก</td></tr>
+
+<tr><td>耳尖</td><td>ěr jiān</td><td>ปลายหู</td></tr>
 
 <tr><td>骨</td><td>gǔ</td><td>กระดูก</td></tr>
 
@@ -128,43 +175,72 @@ button{
 
 <tr><td>两筋之间</td><td>liǎng jīn zhī jiān</td><td>ระหว่างเอ็น</td></tr>
 
-<tr><td>上</td><td>shàng</td><td>ด้านบน</td></tr>
-<tr><td>下</td><td>xià</td><td>ด้านล่าง</td></tr>
+<tr><td>尺骨</td><td>chǐ gǔ</td><td>ulna</td></tr>
 
-<tr><td>前</td><td>qián</td><td>ด้านหน้า</td></tr>
-<tr><td>后</td><td>hòu</td><td>ด้านหลัง</td></tr>
+<tr><td>桡骨</td><td>ráo gǔ</td><td>radius</td></tr>
 
-<tr><td>旁开</td><td>páng kāi</td><td>เยื้องออก</td></tr>
+<tr><td>胫骨</td><td>jìng gǔ</td><td>tibia</td></tr>
+
+<tr><td>腓骨</td><td>féi gǔ</td><td>fibula</td></tr>
+
+<tr><td>锁骨</td><td>suǒ gǔ</td><td>ไหปลาร้า</td></tr>
+
+<tr><td>肩胛骨</td><td>jiān jiǎ gǔ</td><td>สะบัก</td></tr>
+
+<tr><td>脊柱</td><td>jǐ zhù</td><td>กระดูกสันหลัง</td></tr>
+
+<tr><td>上</td><td>shàng</td><td>บน</td></tr>
+
+<tr><td>下</td><td>xià</td><td>ล่าง</td></tr>
+
+<tr><td>前</td><td>qián</td><td>หน้า</td></tr>
+
+<tr><td>后</td><td>hòu</td><td>หลัง</td></tr>
+
+<tr><td>内</td><td>nèi</td><td>ใน</td></tr>
+
+<tr><td>外</td><td>wài</td><td>นอก</td></tr>
+
+<tr><td>中</td><td>zhōng</td><td>กลาง</td></tr>
+
+<tr><td>旁开</td><td>páng kāi</td><td>เยื้อง</td></tr>
+
+<tr><td>直上</td><td>zhí shàng</td><td>ตรงขึ้น</td></tr>
+
+<tr><td>直下</td><td>zhí xià</td><td>ตรงลง</td></tr>
+
+<tr><td>之间</td><td>zhī jiān</td><td>ระหว่าง</td></tr>
+
+<tr><td>中点</td><td>zhōng diǎn</td><td>จุดกึ่งกลาง</td></tr>
 
 </table>
+</div>
 
 <!-- BUTTON -->
-<button class="start" onclick="startQuiz()">🎯 ลองทำ Quiz</button>
+<button class="studyBtn" onclick="alert('อ่านตารางด้านบนได้เลย')">📘 Study Mode</button>
+<button class="quizBtn" onclick="startQuiz()">🎯 Start Quiz (ต้องผ่าน 100%)</button>
 
 <!-- QUIZ -->
-<div class="quiz-box" id="quizBox">
-
-<div id="question"></div>
-<div id="choices"></div>
-
-<div class="result" id="result"></div>
-
+<div class="box" id="quizBox">
+<h3 id="q"></h3>
+<div id="ans"></div>
+<div class="result" id="res"></div>
 </div>
 
 </div>
 
 <script>
 
-const quiz = [
+const quiz=[
 {q:"桡侧 คืออะไร?",a:["ด้านนิ้วโป้ง","ด้านนิ้วก้อย","ด้านใน","ด้านหลัง"],c:0},
 {q:"尺侧 คืออะไร?",a:["ด้านนิ้วก้อย","ด้านนิ้วโป้ง","ด้านหน้า","ด้านบน"],c:0},
-{q:"凹陷中 หมายถึง?",a:["ร่องบุ๋ม","กระดูก","เอ็น","กล้ามเนื้อ"],c:0},
-{q:"横纹 คืออะไร?",a:["รอยพับ","กระดูก","เส้นเลือด","ผิวหนัง"],c:0},
-{q:"两筋之间 คือ?",a:["ระหว่างเอ็น","ใต้เล็บ","บนหัว","ฝ่าเท้า"],c:0}
+{q:"凹陷中 คืออะไร?",a:["ร่องบุ๋ม","กระดูก","เอ็น","กล้ามเนื้อ"],c:0},
+{q:"横纹 คืออะไร?",a:["รอยพับ","เส้นเลือด","กระดูก","ผิวหนัง"],c:0},
+{q:"两筋之间 คืออะไร?",a:["ระหว่างเอ็น","ใต้เล็บ","บนหัว","ฝ่าเท้า"],c:0}
 ];
 
-let index = 0;
-let score = 0;
+let i=0;
+let score=0;
 
 function startQuiz(){
 document.getElementById("quizBox").style.display="block";
@@ -172,37 +248,40 @@ load();
 }
 
 function load(){
-if(index>=quiz.length){
-document.getElementById("question").innerHTML="จบแบบทดสอบ";
-document.getElementById("choices").innerHTML="";
-document.getElementById("result").innerHTML="คะแนน: "+score+"/"+quiz.length;
+if(i>=quiz.length){
+finish();
 return;
 }
 
-let q = quiz[index];
-document.getElementById("question").innerHTML="❓ "+q.q;
+let q=quiz[i];
+document.getElementById("q").innerText=q.q;
 
 let html="";
-q.a.forEach((x,i)=>{
-html+=`<button class="choice" onclick="ans(${i})">${x}</button>`;
+q.a.forEach((x,idx)=>{
+html+=`<button class='choice' onclick='ans(${idx})'>${x}</button>`;
 });
 
-document.getElementById("choices").innerHTML=html;
+document.getElementById("ans").innerHTML=html;
 }
 
-function ans(i){
-let q = quiz[index];
+function ans(x){
+if(x===quiz[i].c) score++;
+else score-=2;
 
-if(i===q.c){
-score++;
-document.getElementById("result").innerHTML="✔ ถูก";
+document.getElementById("res").innerText="คะแนน: "+score;
+
+i++;
+setTimeout(load,400);
+}
+
+function finish(){
+document.getElementById("q").innerText="จบแบบทดสอบ";
+
+if(score===quiz.length){
+document.getElementById("ans").innerHTML="🎉 ผ่าน! คุณได้คะแนนเต็ม";
 }else{
-score--;
-document.getElementById("result").innerHTML="❌ ผิด (-1)";
+document.getElementById("ans").innerHTML="❌ ไม่ผ่าน ต้องได้เต็มเท่านั้น";
 }
-
-index++;
-setTimeout(load,500);
 }
 
 </script>
